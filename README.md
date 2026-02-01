@@ -10,7 +10,7 @@ Rather than optimizing a single model blindly, the project emphasizes methodolog
 
 ├── data/
 
-│   ├── raw/cleaned files             
+│   ├── link to the dataset (txt)           
 │            
 
 ├── src/
