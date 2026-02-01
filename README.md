@@ -8,14 +8,16 @@ Rather than optimizing a single model blindly, the project emphasizes methodolog
 *STRUCTURE*
 
 ├── data/
-
+|
 │   ├── raw/cleaned files             
 │            
 │
 ├── src/
-
+|
 │   ├── data_cleaning.py      # Data cleaning and formatting
+|
 │   ├── feature_eng.py        # Rolling feature engineering
+|
 │   └── train.py              # Training, validation, and test evaluation
 │
 ├── README.md
@@ -36,21 +38,29 @@ NASA CMAPSS – Turbofan Engine Degradation Simulation
 
 The project follows a structured, progressive approach:
   Baselines and Linear Models
-    - Simple baselines (mean predictor) and linear models (Linear Regression, Ridge, Lasso) are used to establish a reference level of performance and identify the practical limit of linear approaches.
+  
+  - Simple baselines (mean predictor) and linear models (Linear Regression, Ridge, Lasso) are used to establish a reference level of performance and identify the practical limit of linear approaches.
 
 Temporal Feature Engineering
   
   Short-term memory is introduced through rolling statistics computed per engine:
-    - rolling mean (state estimation)
-    - rolling slope (local degradation trend)
-    - rolling standard deviation (local instability)
+  
+  - rolling mean (state estimation)
+
+  - rolling slope (local degradation trend)
+    
+  - rolling standard deviation (local instability)
 
 Several non-linear models are evaluated and tuned under the same protocol:
-    - Random Forest
-    - ExtraTrees
-    - HistGradientBoosting
-    - XGBoost
-    - LightGBM
+  - Random Forest
+
+  - ExtraTrees
+    
+  - HistGradientBoosting
+    
+  - XGBoost
+    
+  - LightGBM
     
 (Hyperparameter search is deliberately constrained to avoid overfitting and excessive compute)
 
