@@ -8,10 +8,12 @@ Rather than optimizing a single model blindly, the project emphasizes methodolog
 *STRUCTURE*
 
 ├── data/
+
 │   ├── raw/cleaned files             
 │            
 │
 ├── src/
+
 │   ├── data_cleaning.py      # Data cleaning and formatting
 │   ├── feature_eng.py        # Rolling feature engineering
 │   └── train.py              # Training, validation, and test evaluation
@@ -21,9 +23,13 @@ Rather than optimizing a single model blindly, the project emphasizes methodolog
 *DATASET*
 
 NASA CMAPSS – Turbofan Engine Degradation Simulation
+
 - Each unit_id corresponds to a physical engine
+
 - Each row represents one operational cycle with multiple sensor readings
+
 - Training data includes RUL labels
+
 - Test data does not include RUL; true values are provided separately (RUL_FD001.txt)
 
 *METHODOLOGY*
@@ -33,6 +39,7 @@ The project follows a structured, progressive approach:
     - Simple baselines (mean predictor) and linear models (Linear Regression, Ridge, Lasso) are used to establish a reference level of performance and identify the practical limit of linear approaches.
 
 Temporal Feature Engineering
+  
   Short-term memory is introduced through rolling statistics computed per engine:
     - rolling mean (state estimation)
     - rolling slope (local degradation trend)
