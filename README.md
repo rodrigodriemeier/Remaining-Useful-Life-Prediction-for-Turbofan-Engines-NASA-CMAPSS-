@@ -5,6 +5,7 @@
 This project addresses the prediction of Remaining Useful Life (RUL) for aircraft turbofan engines using multivariate sensor data from the NASA CMAPSS dataset. Each engine is modeled as an independent temporal sequence of operating cycles up to failure. The main objective is to assess how far classical tabular machine learning models can go in capturing degradation patterns under a realistic evaluation protocol.
 Rather than optimizing a single model blindly, the project emphasizes methodological rigor: consistent train/validation splits by engine, careful handling of temporal information, and interpretation of performance limits
 
+
 *STRUCTURE*
 
 ├── data/
@@ -22,6 +23,8 @@ Rather than optimizing a single model blindly, the project emphasizes methodolog
 
 ├── README.md
 
+
+
 *DATASET*
 
 NASA CMAPSS – Turbofan Engine Degradation Simulation
@@ -33,6 +36,8 @@ NASA CMAPSS – Turbofan Engine Degradation Simulation
 - Training data includes RUL labels
 
 - Test data does not include RUL; true values are provided separately (RUL_FD001.txt)
+
+
 
 *METHODOLOGY*
 
@@ -70,6 +75,8 @@ Evaluation Protocol
   - Validation split: by engine (fixed subset of units)
     
   - Final test evaluation: one prediction per engine, using the last available cycle, compared against official CMAPSS RUL targets
+
+
 
 *RESULTS*
 
@@ -117,6 +124,8 @@ Final test result (FD001)
   - ExtraTrees evaluated on official test set (last cycle per engine).
     
   - Test MAE ≈ 18.5 cycles.
+
+
 
 *CONCLUSION*
 
