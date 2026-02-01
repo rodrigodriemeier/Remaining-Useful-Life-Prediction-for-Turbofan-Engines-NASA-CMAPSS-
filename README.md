@@ -8,18 +8,18 @@ Rather than optimizing a single model blindly, the project emphasizes methodolog
 *STRUCTURE*
 
 ├── data/
-|
+
 │   ├── raw/cleaned files             
 │            
-│
+
 ├── src/
-|
+
 │   ├── data_cleaning.py      # Data cleaning and formatting
-|
+
 │   ├── feature_eng.py        # Rolling feature engineering
-|
+
 │   └── train.py              # Training, validation, and test evaluation
-│
+
 ├── README.md
 
 *DATASET*
@@ -65,47 +65,58 @@ Several non-linear models are evaluated and tuned under the same protocol:
 (Hyperparameter search is deliberately constrained to avoid overfitting and excessive compute)
 
 Evaluation Protocol
-    - Metric: Mean Absolute Error (MAE), expressed in number of cycles
-    - Validation split: by engine (fixed subset of units)
-    - Final test evaluation: one prediction per engine, using the last available cycle, compared against official CMAPSS RUL targets
+  - Metric: Mean Absolute Error (MAE), expressed in number of cycles
+    
+  - Validation split: by engine (fixed subset of units)
+    
+  - Final test evaluation: one prediction per engine, using the last available cycle, compared against official CMAPSS RUL targets
 
 *RESULTS*
 
 Baseline (mean predictor)
-    - MAE ≈ 56 cycles
-    - Confirms that naive predictors are not informative.
+  - MAE ≈ 56 cycles
+    
+  - Confirms that naive predictors are not informative.
     
 Linear models (no feature engineering)
-    - Linear Regression / Ridge / Lasso: MAE ≈ 25 
-    - Large performance jump, but clear saturation of linear models.
+  - Linear Regression / Ridge / Lasso: MAE ≈ 25
+    
+  - Large performance jump, but clear saturation of linear models.
 
 Linear models + deltas
-    - Marginal improvement only (MAE ≈ 25.0)
-    - Indicates limited additional signal from 1-step differences.
+  - Marginal improvement only (MAE ≈ 25.0)
+    
+  - Indicates limited additional signal from 1-step differences.
 
 Linear models + rolling mean / slope / std
-    - No improvement (sometimes worse than raw features).
-    - Confirms representational limits of linear models.
+  - No improvement (sometimes worse than raw features).
+    
+  - Confirms representational limits of linear models.
 
 (Although rolling mean, slope, and standard deviation did not improve linear models, they were retained because they 
 provide a physically meaningful temporal representation that non-linear models can exploit more effectively)
 
 Random Forest
-    - Validation MAE ≈ 22.5 after tuning.
-    - Non-linear interactions provide additional but limited gains.
+  - Validation MAE ≈ 22.5 after tuning.
+    
+  - Non-linear interactions provide additional but limited gains.
 
 ExtraTrees (best model)
-    - Validation MAE ≈ 21.9
-    - Best-performing model among all tested approaches.
-    - Key characteristics: moderately deep trees, feature subsampling, minimum leaf size regularization.
+  - Validation MAE ≈ 21.9
+    
+  - Best-performing model among all tested approaches.
+    
+  - Key characteristics: moderately deep trees, feature subsampling, minimum leaf size regularization.
 
 Boosting models (HGB, XGBoost, LightGBM)
-    - Competitive but inferior to ExtraTrees (MAE ≈ 23–24).
-    - No significant advantage in this setup.
+  - Competitive but inferior to ExtraTrees (MAE ≈ 23–24).
+    
+- No significant advantage in this setup.
 
 Final test result (FD001)
-    - ExtraTrees evaluated on official test set (last cycle per engine).
-    - Test MAE ≈ 18.5 cycles.
+  - ExtraTrees evaluated on official test set (last cycle per engine).
+    
+  - Test MAE ≈ 18.5 cycles.
 
 *CONCLUSION*
 
