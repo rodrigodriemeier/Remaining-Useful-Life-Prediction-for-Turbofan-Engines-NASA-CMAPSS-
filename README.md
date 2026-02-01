@@ -96,7 +96,11 @@ This study shows that, for the NASA CMAPSS FD001 dataset, most of the easily acc
 
 
 AUTHOR Rodrigo Driemeier dos Santos EESC – University of São Paulo (USP), São Carlos, Brazil — Mechatronics Engineering École Centrale de Lille, France — Generalist Engineering
+
 📧 rodrigo.driemeier@centrale.centralelille.fr
+
 📧 rodrigodriemeier@usp.br
+
 🔗 https://www.linkedin.com/in/rodrigo-driemeier-dos-santos-a7698633b/
+
 Thanks for checking out the project :)
